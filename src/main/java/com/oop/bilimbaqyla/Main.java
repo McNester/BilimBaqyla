@@ -1,14 +1,15 @@
 package com.oop.bilimbaqyla;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.oop.bilimbaqyla.services.DataBaseConnection;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        DataBaseConnection db = new DataBaseConnection();
+
+        SpringApplication.run(Main.class,args);
+
+        /*DataBaseConnection db = new DataBaseConnection();
 
         ResultSet rs = db.get("SELECT * FROM admins;\n");
         try {
@@ -24,6 +25,6 @@ public class Main {
             }
         }catch (SQLException throwables){
             System.out.println(throwables.getMessage());
-        }
+        }*/
     }
 }
