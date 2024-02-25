@@ -10,8 +10,6 @@ public class Main {
         ResultSet rs = db.get("SELECT * FROM admins;\n");
         try {
             while (rs.next()) {
-                System.out.println("My branch");
-                System.out.println("Hello from Serafim");
                 int id = rs.getInt("adminId");
                 String username = rs.getString("username");
                 String passwd = rs.getString("passwd");
