@@ -11,6 +11,7 @@ public class Main {
         try {
             while (rs.next()) {
                 System.out.println("My branch");
+                System.out.println("Hello from Serafim");
                 int id = rs.getInt("adminId");
                 String username = rs.getString("username");
                 String passwd = rs.getString("passwd");
@@ -18,6 +19,7 @@ public class Main {
                 System.out.println();
                 System.out.println("Admin number "+id+":\n"+"UserName: "+ username+"\nPassword: "+passwd);
                 System.out.println();
+
             }
         }catch (SQLException throwables){
             System.out.println(throwables.getMessage());
