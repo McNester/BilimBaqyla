@@ -1,4 +1,7 @@
-import services.DataBaseConnection;
+package com.oop.bilimbaqyla;
+
+
+import com.oop.bilimbaqyla.services.DataBaseConnection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package models;
+package com.oop.bilimbaqyla.models;
 
 public class Subject {
     private int subjectId;

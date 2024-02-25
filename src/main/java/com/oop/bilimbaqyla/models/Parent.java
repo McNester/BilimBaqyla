@@ -1,4 +1,4 @@
-package models;
+package com.oop.bilimbaqyla.models;
 
 import java.util.ArrayList;
 

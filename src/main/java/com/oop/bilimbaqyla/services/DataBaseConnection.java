@@ -1,4 +1,4 @@
-package services;
+package com.oop.bilimbaqyla.services;
 
 
 import java.sql.*;
