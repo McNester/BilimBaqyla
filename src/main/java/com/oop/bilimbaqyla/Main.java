@@ -11,6 +11,8 @@ public class Main {
 
         /*DataBaseConnection db = new DataBaseConnection();
 
+        Hello from serafim's branch
+
         ResultSet rs = db.get("SELECT * FROM admins;\n");
         try {
             while (rs.next()) {
