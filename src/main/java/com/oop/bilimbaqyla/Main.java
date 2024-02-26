@@ -10,6 +10,7 @@ public class Main {
         SpringApplication.run(Main.class,args);
 
         /*DataBaseConnection db = new DataBaseConnection();
+        My own branch
 
         ResultSet rs = db.get("SELECT * FROM admins;\n");
         try {
