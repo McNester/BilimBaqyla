@@ -50,7 +50,7 @@ public class RegisterController {
         ParentRepo parentRepo = new ParentRepo();
         parentRepo.create(parent);
         redirectAttributes.addFlashAttribute("parent", parent);
-        return "redirect:/";
+        return "redirect:/parentapp";
 
 
     }
