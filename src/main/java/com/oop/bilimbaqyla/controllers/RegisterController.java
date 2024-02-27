@@ -2,6 +2,7 @@ package com.oop.bilimbaqyla.controllers;
 
 
 import com.oop.bilimbaqyla.models.Parent;
+import com.oop.bilimbaqyla.repositories.ParentRepo;
 import com.oop.bilimbaqyla.utility.FieldsChecker;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ public class RegisterController {
     private static boolean isPhoneValid;
     private static boolean isEmailValid;
     private static boolean isPasswdValid;
+    private static boolean isUserExist;
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -34,21 +36,19 @@ public class RegisterController {
         }
 
         validate(parent.getFirstname(),parent.getLastname(),parent.getPhoneNumber(),parent.getPasswd(),parent.getEmail());
-        if(isValidForm() == false){
+        checkExistingParent(parent.getUsername());
+        if(isValidForm() == false || isUserExist){
             model.addAttribute("isNameNotValid", !isNameValid);
             model.addAttribute("isLastnameNotValid", !isLastnameValid);
             model.addAttribute("isPhoneNotValid", !isPhoneValid);
             model.addAttribute("isEmailNotValid", !isEmailValid);
             model.addAttribute("isPasswdNotValid", !isPasswdValid);
+            model.addAttribute("isUserExist", isUserExist);
             return "register";
         }
 
-        // Validate the user details
-        // If validation fails, return back to the registration page
-
-        // If validation passes, redirect to the main application
-        // Pass the User object to the main application
-        // For simplicity, we are redirecting to a dummy 'home' page
+        ParentRepo parentRepo = new ParentRepo();
+        parentRepo.create(parent);
         redirectAttributes.addFlashAttribute("parent", parent);
         return "redirect:/";
 
@@ -73,5 +73,12 @@ public class RegisterController {
         return false;
 
     }
+
+    private void checkExistingParent(String username){
+        ParentRepo parentRepo = new ParentRepo();
+
+        isUserExist = parentRepo.checkUsername(username);
+    }
+
 
 }
