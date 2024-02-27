@@ -16,7 +16,6 @@ public class AdminController {
         if (admin != null) {
             model.addAttribute("admin", admin);
         }
-
         return "adminPage";
     }
 }

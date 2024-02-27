@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin page</title>
 </head>
 <body>
-
+    <form th:method="POST" th:action="@{/teachers}" th:object="${teacher}">
+        <div>
+            <label>Firstname:</label>
+            <input type="text" th:field="*{firstname}" id="firstname"/>
+            <label>Surname:</label>
+            <input type="text" th:field="*{surname}" id="surname"/>
+            <label>Username:</label>
+            <input type="text" th:field="*{username}" id="username"/>
+            <label>Email:</label>
+            <input type="text" th:field="*{email}" id="email"/>
+            <label>Password:</label>
+            <input type="password" th:field="*{password}" id="password"/>
+            <input type="submit" value="new Teacher">
+        </div>
+    </form>
 </body>
 </html>
