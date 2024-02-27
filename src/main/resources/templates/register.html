@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center">Регистрация</h2>
+
+            <form th:action="@{/register}" th:object="${parent}" method="post">
+                <div class="form-group">
+                    <label for="firstname">Имя</label>
+                    <input class="form-control" type="text" id="firstname" th:field="*{firstname}" placeholder="Имя" />
+                    <small  th:if="${isNameNotValid}" id="firstnameHelp" class="form-text text-muted">Некорректное имя</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">Фамилия</label>
+                    <input class="form-control" type="text" id="lastname" th:field="*{lastname}" placeholder="Фамилия" />
+                    <small  th:if="${isLastnameNotValid}" id="lastnameHelp" class="form-text text-muted">Некорректная фамилия</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Телефонный номер</label>
+                    <input class="form-control" type="tel" id="phoneNumber" th:field="*{phoneNumber}" placeholder="8(702)-896-72-66" />
+                    <small  th:if="${isPhoneNotValid}" id="phoneNumberHelp" class="form-text text-muted">Некорректный номер телефона</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Почта</label>
+                    <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Почта"/>
+                    <small  th:if="${isEmailNotValid}" id="emailHelp" class="form-text text-muted">Некорректный email</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input class="form-control" type="text" id="username" th:field="*{username}" placeholder="Имя пользователя"/>
+                    <small  th:if="${isUserExist}" id="usernameHelp" class="form-text text-muted">Имя пользователя уже занято</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input  class="form-control" type="password" id="password" th:field="*{passwd}" placeholder="Пароль" />
+                    <small  th:if="${isPasswdNotValid}" id="passwordHelp" class="form-text text-muted">Пароль должен включать от 6 символов, минимум 1 цифру, 1 заглавный и 1 строчный символы</small>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

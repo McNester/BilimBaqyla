@@ -10,13 +10,15 @@ public class Main {
         SpringApplication.run(Main.class,args);
 
         /*DataBaseConnection db = new DataBaseConnection();
+        My own branch
 
+        Hello from serafim's branch
         ResultSet rs = db.get("SELECT * FROM admins;\n");
         try {
             while (rs.next()) {
                 int id = rs.getInt("adminId");
                 String username = rs.getString("username");
-                String passwd = rs.getString("passwd");
+                String passwd = rs.getS tring("passwd");
 
                 System.out.println();
                 System.out.println("Admin number "+id+":\n"+"UserName: "+ username+"\nPassword: "+passwd);
