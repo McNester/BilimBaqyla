@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+
+            <h2 class="text-center">Вход</h2>
+            <form th:action="@{/login}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input class="form-control" type="text" id="username" name="username" th:field="*{username}" placeholder="Имя пользователя" required />
+
+                    <small  th:if="${isUsernameExists}" id="usernameHelpExists" class="form-text text-muted">Пользователь не существует</small>
+                    <small  th:if="${isUsernameValid}" id="usernameHelp" class="form-text text-muted">Некорректное имя пользователя</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input class="form-control" type="password" id="password" name="password" th:field="*{passwd}" placeholder="Пароль" required />
+
+
+                    <small  th:if="${isPasswdSuits}" id="passwordHelpExist" class="form-text text-muted">Неверный пароль</small>
+                    <small  th:if="${isPasswdValid}" id="passwordHelp" class="form-text text-muted">Пароль должен включать от 6 символов, минимум 1 цифру, 1 заглавный и 1 строчный символы</small>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary" type="submit">Войти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
