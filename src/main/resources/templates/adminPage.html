@@ -1,24 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Admin page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <form th:method="POST" th:action="@{/teachers}" th:object="${teacher}">
-        <div>
-            <label>Firstname:</label>
-            <input type="text" th:field="*{firstname}" id="firstname"/>
-            <label>Surname:</label>
-            <input type="text" th:field="*{surname}" id="surname"/>
-            <label>Username:</label>
-            <input type="text" th:field="*{username}" id="username"/>
-            <label>Email:</label>
-            <input type="text" th:field="*{email}" id="email"/>
-            <label>Password:</label>
-            <input type="password" th:field="*{password}" id="password"/>
-            <input type="submit" value="new Teacher">
-        </div>
-    </form>
+    <div class="Title" style="font-size: 30px; margin: auto">Parents require confirmation:</div>
+    <div style="margin: 50px 10%" class="list-group" th:each="parent : ${parents}">
+        <a href="./requestConfirmation.html">
+            <div class="list-group-item">
+                <p>Parent ID: <span th:text="${parent.parentId}"></span></p>
+                <p>Username: <span th:text="${parent.username}"></span></p>
+                <p>Phone: <span th:text="${parent.phoneNumber}"></span></p>
+            </div>
+        </a>
+
+
+        <!-- Add more details as needed -->
+        <hr/> <!-- Optional: Add a horizontal line between parent details -->
+    </div>
+<!--    <form th:method="POST" th:action="@{/teachers}" th:object="${teacher}">-->
+<!--        <div>-->
+<!--            <label>Firstname:</label>-->
+<!--            <input type="text" th:field="*{firstname}" id="firstname"/>-->
+<!--            <label>Surname:</label>-->
+<!--            <input type="text" th:field="*{surname}" id="surname"/>-->
+<!--            <label>Username:</label>-->
+<!--            <input type="text" th:field="*{username}" id="username"/>-->
+<!--            <label>Email:</label>-->
+<!--            <input type="text" th:field="*{email}" id="email"/>-->
+<!--            <label>Password:</label>-->
+<!--            <input type="password" th:field="*{password}" id="password"/>-->
+<!--            <input type="submit" value="new Teacher">-->
+<!--        </div>-->
+<!--    </form>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
