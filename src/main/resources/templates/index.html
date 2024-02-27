@@ -11,8 +11,8 @@
 <header th:insert="blocks/header :: header"></header>
 <!-- main part of site -->
 <main>
-    <section class="py-5 text-center container">
-       <h1 th:text="${title}"/>
+    <section th:if="${parent}" class="py-5 text-center container">
+       <h1 th:text="${parent.getUsername()}"/>
     </section>
 </main>
 </body>

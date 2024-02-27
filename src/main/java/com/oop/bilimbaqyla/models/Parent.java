@@ -12,6 +12,8 @@ public class Parent {
     private String passwd;
     private String email;
 
+
+    public Parent(){};
     public Parent(int parentId, String firstname, String lastname, ArrayList<Integer> childIdList, String phoneNumber, String username, String passwd, String email) {
         this.parentId = parentId;
         this.firstname = firstname;
