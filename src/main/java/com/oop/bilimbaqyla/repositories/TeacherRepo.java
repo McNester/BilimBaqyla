@@ -86,4 +86,8 @@ public class TeacherRepo {
         return null;
     }
 
+    public void removeTeacherById(int id){
+        String query = String.format(Locale.US, "UPDATE lesson SET teacherid = -1 WHERE teacherid = " + id);
+        db.post(query);
+    }
 }
