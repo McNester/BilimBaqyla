@@ -21,7 +21,6 @@ public class Main {
                 System.out.println();
                 System.out.println("Admin number "+id+":\n"+"UserName: "+ username+"\nPassword: "+passwd);
                 System.out.println();
-
             }
         }catch (SQLException throwables){
             System.out.println(throwables.getMessage());
