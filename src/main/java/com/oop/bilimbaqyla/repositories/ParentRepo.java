@@ -17,7 +17,7 @@ public class ParentRepo {
 
 
     public int create(Parent parent){
-        String query = String.format(Locale.US, "insert into parent (firstname, lastname, phonenumber, username,passwd,email) values('%s','%s','%s','%s','%s','%s') RETURNING id",
+        String query = String.format(Locale.US, "insert into parent (firstname, lastname, phonenumber, username,passwd,email) values('%s','%s','%s','%s','%s','%s') RETURNING parentid",
                 parent.getFirstname(),
                 parent.getLastname(),
                 parent.getPhoneNumber(),
@@ -26,22 +26,10 @@ public class ParentRepo {
                 parent.getEmail());
 
 
-        db.post(query);
+        int id = db.post(query);
 
 
-        String query2  = "select parentid from parent where username = "+ parent.getUsername()+" RETURNING id";
-
-        ResultSet rs = db.get(query2);
-
-        try{
-            while(rs.next()){
-                return rs.getInt("parentid");
-            }
-
-        }catch(SQLException throwables){
-            System.out.println(throwables.getMessage());
-        }
-        return -1;
+        return id;
 
     }
     public Parent getParentById(int id){

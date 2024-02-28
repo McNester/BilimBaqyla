@@ -14,27 +14,14 @@ public class ChildRepo {
     DataBaseConnection db = new DataBaseConnection();
 
     public int create(Child child){
-        String query = String.format(Locale.US, "insert into child (childid,firstname, lastname, parentid, age) values(%d,'%s','%s','%d','%d');",
-                child.getChildId(),
+        String query = String.format(Locale.US, "insert into child (firstname, lastname, parentid, age) values('%s','%s','%d','%d') RETURNING childid",
                 child.getFirstname(),
                 child.getLastname(),
                 child.getParentId(),
                 child.getAge());
-        db.post(query);
+        int id = db.post(query);
 
-        String query2  = "select childid from child where parentid = "+ child.getParentId();
-
-        ResultSet rs = db.get(query2);
-
-        try{
-            while(rs.next()){
-                return rs.getInt("childid");
-            }
-
-        }catch(SQLException throwables){
-            System.out.println(throwables.getMessage());
-        }
-        return -1;
+        return id;
 
     }
 

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 @Controller
 public class ParentAppController {
 
-    int parent_id = -1;
     Parent parent;
 
     @GetMapping("/parentapp")
@@ -56,7 +55,7 @@ public class ParentAppController {
     @PostMapping("/submitChild")
     public String submitChild(@ModelAttribute("newChild") Child child, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
 
-        child.setParentId(parent_id);
+        child.setParentId(parent.getParentId());
 
         ParentRepo parentRepo = new ParentRepo();
         ChildRepo childRepo = new ChildRepo();
@@ -67,7 +66,7 @@ public class ParentAppController {
 
         ArrayList<Child> children = new ArrayList<>();
 
-        children = childRepo.getChildrenByParentId(parent_id);
+        children = childRepo.getChildrenByParentId(parent.getParentId());
 
 
 

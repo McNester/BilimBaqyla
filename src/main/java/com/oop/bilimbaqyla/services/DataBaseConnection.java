@@ -37,14 +37,27 @@ public class DataBaseConnection {
 
     }
 
-    public void post(String sqlQuery){
+    public int post(String sqlQuery){
         try {
 
-            Class.forName("org.postgresql.Driver");
+            /*Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(connectionString,user,passwd);
             Statement stmt = con.createStatement();
-            stmt.executeUpdate(sqlQuery);
-        } catch (SQLException e) {
+            stmt.executeUpdate(sqlQuery);*/
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection(connectionString, user, passwd);
+
+            // Assuming sqlQuery includes "RETURNING id" at the end
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlQuery); // Use executeQuery to handle the RETURNING clause
+
+            if (rs.next()) {
+                return rs.getInt(1); // Get the last inserted ID
+            }
+
+
+
+        }catch (SQLException e) {
             System.out.println("connection error: " + e.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("driver error: " + e.getMessage());
@@ -57,7 +70,9 @@ public class DataBaseConnection {
                 }
             }
         }
+        return -1;
     }
+
 
 
 
