@@ -39,6 +39,7 @@ public class DataBaseConnection {
 
     public void post(String sqlQuery){
         try {
+
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(connectionString,user,passwd);
             Statement stmt = con.createStatement();
@@ -57,5 +58,7 @@ public class DataBaseConnection {
             }
         }
     }
+
+
 
 }

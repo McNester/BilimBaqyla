@@ -1,5 +1,7 @@
 package com.oop.bilimbaqyla.models;
 
+import com.oop.bilimbaqyla.repositories.ChildRepo;
+
 import java.util.ArrayList;
 
 public class Teacher {
@@ -28,18 +30,6 @@ public class Teacher {
         this.username = username;
         this.passwd = passwd;
         this.email = email;
-    }
-
-    public void getAllChildren(){
-
-    }
-
-    public void getAllChildrenByLessonId(){
-
-    }
-
-    public void getLessonsByTeacher(){
-
     }
 
     public int getTeacherId() {

@@ -48,12 +48,15 @@ public class RegisterController {
         }
 
         ParentRepo parentRepo = new ParentRepo();
-        parentRepo.create(parent);
+
+        parent.setParentId(parentRepo.create(parent));
         redirectAttributes.addFlashAttribute("parent", parent);
         return "redirect:/parentapp";
 
 
     }
+
+
 
     private static void validate(String name, String lastname, String phone, String passwd, String email){
         FieldsChecker fieldsChecker = new FieldsChecker();

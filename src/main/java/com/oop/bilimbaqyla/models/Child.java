@@ -11,6 +11,8 @@ public class Child {
     private int age;
     private ArrayList<Integer> waitingLessonsIdList;
 
+    public Child(){};
+
     public Child(int childId, ArrayList<Integer> lessonsIdList, String firstname, String lastname, int parentId, int age, ArrayList<Integer> waitingLessonsIdList) {
         this.childId = childId;
         this.lessonsIdList = lessonsIdList;
