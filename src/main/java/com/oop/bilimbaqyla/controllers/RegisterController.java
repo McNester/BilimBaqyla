@@ -25,7 +25,6 @@ public class RegisterController {
     public String showRegistrationForm(Model model) {
         model.addAttribute("parent", new Parent());
 
-
         return "register";
     }
 

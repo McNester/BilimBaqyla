@@ -2,6 +2,7 @@ package com.oop.bilimbaqyla.repositories;
 
 import com.oop.bilimbaqyla.models.Child;
 import com.oop.bilimbaqyla.models.Parent;
+import com.oop.bilimbaqyla.models.Teacher;
 import com.oop.bilimbaqyla.services.DataBaseConnection;
 import org.springframework.stereotype.Repository;
 
@@ -173,4 +174,44 @@ public class ParentRepo {
         return  false;
     }
 
+    public String getPasswdByUsername(String username){
+        ResultSet rs = db.get("SELECT passwd FROM parent WHERE username = "+username);
+
+        try {
+
+            while (rs.next()) {
+                String passwd = rs.getString("passwd");
+
+                return passwd;
+            }
+
+        }catch (SQLException throwables){
+            System.out.println(throwables.getMessage());
+        }
+        return null;
+    }
+
+    public Parent getParentByUsername(String username){
+        ResultSet rs = db.get("SELECT * FROM parent WHERE username = "+username);
+
+        try {
+
+            while (rs.next()) {
+                int id = rs.getInt("parentid");
+                String name = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                String phone = rs.getString("phonenumber");
+                String passwd = rs.getString("passwd");
+                String email = rs.getString("email");
+
+                ArrayList <Integer> childIdList = getChildrenIdByParent(id);
+
+                return new Parent(id,name,lastname,childIdList,phone,username,passwd,email);
+            }
+
+        }catch (SQLException throwables){
+            System.out.println(throwables.getMessage());
+        }
+        return null;
+    }
 }

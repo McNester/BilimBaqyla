@@ -90,4 +90,59 @@ public class TeacherRepo {
         String query = String.format(Locale.US, "UPDATE lesson SET teacherid = -1 WHERE teacherid = " + id);
         db.post(query);
     }
+
+    public boolean checkUsername(String username){
+        String query = "SELECT EXISTS (SELECT 1 FROM teacher WHERE username = '"+username+"') AS DoesExist;";
+
+        ResultSet rs = db.get(query);
+        try {
+            if (rs.next()) {
+                boolean doesExist = rs.getBoolean("DoesExist");
+                return doesExist;
+            }
+        }catch(SQLException throwables){
+            System.out.println(throwables.getMessage());
+        }
+        return  false;
+    }
+
+    public String getPasswdByUsername(String username){
+        ResultSet rs = db.get("SELECT passwd FROM teacher WHERE username = "+username);
+
+        try {
+
+            while (rs.next()) {
+                String passwd = rs.getString("passwd");
+
+                return passwd;
+            }
+
+        }catch (SQLException throwables){
+            System.out.println(throwables.getMessage());
+        }
+        return null;
+    }
+
+    public Teacher getTeacherByUsername(String username){
+        ResultSet rs = db.get("SELECT * FROM teacher WHERE username = "+username);
+
+        try {
+
+            while (rs.next()) {
+                int id = rs.getInt("teacherid");
+                String firstname = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                String passwd = rs.getString("passwd");
+                String email = rs.getString("email");
+
+                ArrayList <Integer> lessonsIdList = getLessonIdByTeacher(id);
+
+                return new Teacher(id, lessonsIdList, firstname, lastname,username,passwd,email);
+            }
+
+        }catch (SQLException throwables){
+            System.out.println(throwables.getMessage());
+        }
+        return null;
+    }
 }
